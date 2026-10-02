@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust Travels - Premium Packages & Holiday Deals</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS Animations & Helpers -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-serif-heading {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Continuous Scrolling Marquee Ticker */
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+        .ticker-wrap {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-move {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: ticker 32s linear infinite;
+        }
+        .ticker-move:hover {
+            animation-play-state: paused;
+        }
+        .ticker-item {
+            display: inline-block;
+            padding: 0 2rem;
+        }
+
+        /* Glassmorphism effects */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- TOP SCROLLING DISCOUNT TICKER BAR -->
+    <div class="bg-slate-900 text-amber-300 py-2.5 text-sm font-medium border-b border-amber-500/20 sticky top-0 z-50 shadow-md">
+        <div class="ticker-wrap">
+            <div class="ticker-move flex items-center">
+                <span class="ticker-item flex items-center gap-2">
+                    <i class="fa-solid fa-fire-flame-curved text-rose-500 animate-pulse"></i>
+                    <span><strong>MUMBAI TO GOA CRUISE SPECIAL:</strong> Get 20% OFF! Code: <span class="bg-amber-400 text-slate-950 px-2 py-0.5 rounded font-extrabold text-xs tracking-wider">GOAEXPRESS20</span></span>
+                </span>
+                <span class="text-slate-600">•</span>
+                <span class="ticker-item flex items-center gap-2">
+                    <i class="fa-solid fa-mountain text-emerald-400"></i>
+                    <span><strong>NAINITAL TO DELHI HILLS ESCAPE:</strong> Flat ₹2,500 Off! Code: <span class="bg-amber-400 text-slate-950 px-2 py-0.5 rounded font-extrabold text-xs tracking-wider">HILLSTATION15</span></span>
+                </span>
+                <span class="text-slate-600">•</span>
+                <span class="ticker-item flex items-center gap-2">
+                    <i class="fa-solid fa-gift text-sky-400"></i>
+                    <span><strong>EARLY BIRD DEAL:</strong> Additional 10% instant discount on all 2026 autumn & winter holiday bookings!</span>
+                </span>
+                <span class="text-slate-600">•</span>
+                <span class="ticker-item flex items-center gap-2">
+                    <i class="fa-solid fa-headset text-indigo-400"></i>
+                    <span>24/7 Travel Helpline: <strong class="text-white">+91 (022) 4981-8800</strong></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION BAR -->
+    <header class="glass-nav sticky top-[37px] z-40 border-b border-slate-200/80 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 bg-gradient-to-tr from-sky-600 to-indigo-600 text-white rounded-2xl flex items-center justify-center shadow-lg shadow-sky-500/20 group-hover:scale-105 transition transform">
+                    <i class="fa-solid fa-plane-departure text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-black tracking-tight font-serif-heading text-slate-900">Wanderlust</span>
+                    <span class="text-[10px] uppercase tracking-widest font-bold block text-sky-600 -mt-1">Travels & Experiences</span>
+                </div>
+            </a>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-700">
+                <a href="#packages" class="hover:text-sky-600 transition flex items-center gap-1.5"><i class="fa-solid fa-compass text-slate-400"></i> Tour Packages</a>
+                <a href="#reviews" class="hover:text-sky-600 transition flex items-center gap-1.5"><i class="fa-solid fa-star text-slate-400"></i> Reviews</a>
+                <a href="#faqs" class="hover:text-sky-600 transition flex items-center gap-1.5"><i class="fa-solid fa-circle-question text-slate-400"></i> FAQs</a>
+                <a href="#contact" class="hover:text-sky-600 transition flex items-center gap-1.5"><i class="fa-solid fa-envelope text-slate-400"></i> Contact Us</a>
+            </nav>
+
+            <!-- CTA Actions -->
+            <div class="flex items-center gap-3">
+                <button onclick="openBookingModal('General Query')" class="hidden sm:inline-flex bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-xl transition">
+                    Custom Itinerary
+                </button>
+                <a href="#packages" class="bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-700 hover:to-indigo-700 text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-lg shadow-sky-600/20 transition transform hover:-translate-y-0.5">
+                    Explore Deals
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO BANNER SECTION -->
+    <section class="relative bg-slate-950 text-white py-24 sm:py-32 overflow-hidden">
+        <!-- Background Overlay Image -->
+        <div class="absolute inset-0 z-0 opacity-45">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=85" alt="Beach Travel" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent z-10"></div>
+
+        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 bg-sky-500/20 backdrop-blur-md border border-sky-400/30 text-sky-200 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full mb-6">
+                <i class="fa-solid fa-award text-amber-400"></i> Certified Government Approved Travel Agency
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-serif-heading tracking-tight max-w-4xl mx-auto leading-tight mb-6">
+                Unforgettable Holidays, Crafted with Precision
+            </h1>
+            
+            <p class="text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto font-light leading-relaxed mb-10">
+                Book verified travel packages across India's most iconic routes. Enjoy all-inclusive stays, private cab transfers, guided tours, and 24/7 customer support.
+            </p>
+
+            <!-- Key Trust Badges -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6 border-t border-white/10 text-left">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-shield-halved text-2xl text-sky-400"></i>
+                    <div>
+                        <span class="block text-sm font-bold">100% Safe Booking</span>
+                        <span class="text-xs text-slate-400">Instant Confirmation</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-hotel text-2xl text-sky-400"></i>
+                    <div>
+                        <span class="block text-sm font-bold">Handpicked Hotels</span>
+                        <span class="text-xs text-slate-400">4★ & 5★ Rated Stays</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-user-shield text-2xl text-sky-400"></i>
+                    <div>
+                        <span class="block text-sm font-bold">Verified Drivers</span>
+                        <span class="text-xs text-slate-400">Private AC Vehicles</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-tag text-2xl text-sky-400"></i>
+                    <div>
+                        <span class="block text-sm font-bold">Best Price Guarantee</span>
+                        <span class="text-xs text-slate-400">No Hidden Charges</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOUR PACKAGES SECTION -->
+    <section id="packages" class="py-20 bg-slate-100/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-sky-600 font-bold uppercase tracking-wider text-xs block mb-1">Featured Itineraries</span>
+                    <h2 class="text-3xl sm:text-4xl font-black font-serif-heading text-slate-900">Trending Holiday Packages</h2>
+                </div>
+                <div class="flex items-center gap-2 bg-white p-1.5 rounded-2xl shadow-sm border border-slate-200">
+                    <button class="bg-sky-600 text-white font-semibold text-xs px-4 py-2 rounded-xl shadow-sm">All Routes</button>
+                    <button class="text-slate-600 hover:bg-slate-100 font-semibold text-xs px-4 py-2 rounded-xl transition">Coastal</button>
+                    <button class="text-slate-600 hover:bg-slate-100 font-semibold text-xs px-4 py-2 rounded-xl transition">Hills</button>
+                </div>
+            </div>
+
+            <!-- PACKAGES GRID -->
+            <div class="grid lg:grid-cols-2 gap-10">
+
+                <!-- PACKAGE 1: MUMBAI TO GOA -->
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-xl shadow-slate-200/50 flex flex-col justify-between transition hover:shadow-2xl">
+                    <div>
+                        <!-- Image Container with Badges -->
+                        <div class="relative h-72 overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80" 
+                                 alt="Goa Beach Resort" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                            
+                            <div class="absolute top-4 left-4 flex gap-2">
+                                <span class="bg-rose-500 text-white font-extrabold text-[11px] uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+                                    <i class="fa-solid fa-fire mr-1"></i> Hot Seller
+                                </span>
+                                <span class="bg-slate-900/80 backdrop-blur-md text-white font-bold text-[11px] uppercase tracking-wider px-3 py-1 rounded-full border border-white/20">
+                                    5 Days / 4 Nights
+                                </span>
+                            </div>
+
+                            <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end text-white">
+                                <div>
+                                    <span class="text-sky-300 text-xs font-semibold uppercase tracking-wider block">Route Option A</span>
+                                    <h3 class="text-2xl font-bold font-serif-heading">Mumbai to Goa Coastal Escape</h3>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-xs text-slate-300 block line-through">₹18,500</span>
+                                    <span class="text-2xl font-black text-amber-300">₹14,800</span>
+                                    <span class="text-[10px] text-slate-300 block">/ per person</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="p-6 sm:p-8 space-y-6">
+                            
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Experience the ultimate beach getaway starting with luxury overnight AC Sleeper Bus / Train transfers from Mumbai to North Goa. Enjoy 4-star beach resort stays, North & South Goa guided sightseeing, water sports voucher, and daily buffet breakfast.
+                            </p>
+
+                            <!-- Inclusions Grid -->
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 py-3 border-y border-slate-100 text-xs font-semibold text-slate-700">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-hotel text-sky-600 text-sm"></i>
+                                    <span>4★ Beach Resort</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-utensils text-sky-600 text-sm"></i>
+                                    <span>Daily Breakfast</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-bus text-sky-600 text-sm"></i>
+                                    <span>Mumbai Transfers</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-water text-sky-600 text-sm"></i>
+                                    <span>Cruise Voucher</span>
+                                </div>
+                            </div>
+
+                            <!-- Day-by-Day Quick Itinerary -->
+                            <div>
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Itinerary Highlights</h4>
+                                <ul class="space-y-2 text-xs text-slate-600">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i>
+                                        <span><strong>Day 1:</strong> Overnight pickup from Mumbai (Dadars/Vashi) & transfer to Goa.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i>
+                                        <span><strong>Day 2:</strong> Resort Check-in, Baga Beach relaxation & Mandovi River sunset cruise.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i>
+                                        <span><strong>Day 3:</strong> Full day North Goa Sightseeing (Calangute, Anjuna, Aguada Fort).</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i>
+                                        <span><strong>Day 4:</strong> South Goa Heritage Tour (Old Goa Churches, Mangueshi Temple).</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i>
+                                        <span><strong>Day 5:</strong> Breakfast & comfortable return journey back to Mumbai.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Footer Actions -->
+                    <div class="px-6 pb-6 sm:px-8 sm:pb-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100 pt-6">
+                        <div>
+                            <span class="text-[11px] uppercase font-bold text-slate-400 block">Applicable Coupon</span>
+                            <span class="text-xs font-black text-rose-600 bg-rose-50 px-2 py-1 rounded-md border border-rose-200">
+                                GOAEXPRESS20 (20% OFF)
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-3 w-full sm:w-auto">
+                            <button onclick="openBookingModal('Mumbai to Goa Coastal Escape', 14800, 'GOAEXPRESS20')" class="w-full sm:w-auto bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-700 hover:to-indigo-700 text-white font-bold text-sm px-6 py-3 rounded-xl shadow-lg shadow-sky-600/20 transition">
+                                Book This Package
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PACKAGE 2: NAINITAL TO DELHI -->
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-xl shadow-slate-200/50 flex flex-col justify-between transition hover:shadow-2xl">
+                    <div>
+                        <!-- Image Container with Badges -->
+                        <div class="relative h-72 overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?auto=format&fit=crop&w=1200&q=80" 
+                                 alt="Nainital Lake View" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                            
+                            <div class="absolute top-4 left-4 flex gap-2">
+                                <span class="bg-emerald-600 text-white font-extrabold text-[11px] uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+                                    <i class="fa-solid fa-mountain mr-1"></i> Mountain Special
+                                </span>
+                                <span class="bg-slate-900/80 backdrop-blur-md text-white font-bold text-[11px] uppercase tracking-wider px-3 py-1 rounded-full border border-white/20">
+                                    4 Days / 3 Nights
+                                </span>
+                            </div>
+
+                            <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end text-white">
+                                <div>
+                                    <span class="text-sky-300 text-xs font-semibold uppercase tracking-wider block">Route Option B</span>
+                                    <h3 class="text-2xl font-bold font-serif-heading">Nainital to Delhi Hill Retreat</h3>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-xs text-slate-300 block line-through">₹12,000</span>
+                                    <span class="text-2xl font-black text-amber-300">₹9,500</span>
+                                    <span class="text-[10px] text-slate-300 block">/ per person</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="p-6 sm:p-8 space-y-6">
+                            
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Escape the city heat with a tranquil journey starting in the scenic hill station of Nainital and concluding in historic Delhi. Includes lakefront hotel accommodations, complimentary Naini lake boating, Bhimtal sightseeing, and private AC car transfer to Delhi.
+                            </p>
+
+                            <!-- Inclusions Grid -->
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 py-3 border-y border-slate-100 text-xs font-semibold text-slate-700">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-hotel text-sky-600 text-sm"></i>
+                                    <span>Lake-view Hotel</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-sailboat text-sky-600 text-sm"></i>
+                                    <span>Free Boat Ride</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-car text-sky-600 text-sm"></i>
+                                    <span>Private AC Cab</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-bowl-food text-sky-600 text-sm"></i>
+                                    <span>Breakfast & Dinner</span>
+                                </div>
+                            </div>
+
+                            <!-- Day-by-Day Quick Itinerary -->
+                            <div>
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Itinerary Highlights</h4>
+                                <ul class="space-y-2 text-xs text-slate-600">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i>
+                                        <span><strong>Day 1:</strong> Arrival in Nainital, Mall Road evening stroll & hotel check-in.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i>
+                                        <span><strong>Day 2:</strong> Famous Lake Tour (Bhimtal, Sattal, Naukuchiatal) & Ropeway Ride.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i>
+                                        <span><strong>Day 3:</strong> Eco Cave Gardens, Naina Devi Temple & scenic mountain viewpoint.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i>
+                                        <span><strong>Day 4:</strong> Scenic drive down to Delhi with drop at Airport / Railway station.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Footer Actions -->
+                    <div class="px-6 pb-6 sm:px-8 sm:pb-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100 pt-6">
+                        <div>
+                            <span class="text-[11px] uppercase font-bold text-slate-400 block">Applicable Coupon</span>
+                            <span class="text-xs font-black text-rose-600 bg-rose-50 px-2 py-1 rounded-md border border-rose-200">
+                                HILLSTATION15 (₹2.5k OFF)
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-3 w-full sm:w-auto">
+                            <button onclick="openBookingModal('Nainital to Delhi Hill Retreat', 9500, 'HILLSTATION15')" class="w-full sm:w-auto bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-700 hover:to-indigo-700 text-white font-bold text-sm px-6 py-3 rounded-xl shadow-lg shadow-sky-600/20 transition">
+                                Book This Package
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS & TESTIMONIALS SECTION -->
+    <section id="reviews" class="py-20 bg-white border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-sky-600 font-bold uppercase tracking-wider text-xs block mb-1">Real Traveler Stories</span>
+                <h2 class="text-3xl sm:text-4xl font-black font-serif-heading text-slate-900">What Our Guests Say</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-sm gap-1 mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm italic mb-6">
+                            "Booked the Mumbai to Goa package for our family. The AC Sleeper bus transfer was smooth and the resort near Baga beach was super luxurious. Applied code GOAEXPRESS20 and saved ₹3,000 instantly!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-200/80">
+                        <div class="w-10 h-10 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center text-sm">
+                            AR
+                        </div>
+                        <div>
+                            <span class="block font-bold text-sm text-slate-900">Amit & Riya Verma</span>
+                            <span class="text-xs text-slate-400">Traveled from Mumbai</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-sm gap-1 mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm italic mb-6">
+                            "Our Nainital to Delhi trip was so well coordinated. Driver Pankaj was very polite and drove safely through the winding hill roads. Highly recommend Wanderlust Travels!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-200/80">
+                        <div class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm">
+                            SN
+                        </div>
+                        <div>
+                            <span class="block font-bold text-sm text-slate-900">Siddharth Nambiar</span>
+                            <span class="text-xs text-slate-400">Traveled from Nainital</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-sm gap-1 mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm italic mb-6">
+                            "The customer support team helped customize our Goa itinerary to add a private yacht sunset session. Truly professional and transparent pricing with no surprises."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-200/80">
+                        <div class="w-10 h-10 rounded-full bg-rose-600 text-white font-bold flex items-center justify-center text-sm">
+                            PK
+                        </div>
+                        <div>
+                            <span class="block font-bold text-sm text-slate-900">Pooja Kapoor</span>
+                            <span class="text-xs text-slate-400">Traveled to Goa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQS ACCORDION SECTION -->
+    <section id="faqs" class="py-20 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-sky-600 font-bold uppercase tracking-wider text-xs block mb-1">Help & Guidance</span>
+                <h2 class="text-3xl font-black font-serif-heading text-slate-900">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq('faq1')" class="w-full p-5 text-left font-bold text-slate-800 flex justify-between items-center hover:bg-slate-50 transition">
+                        <span>How do I claim discount coupons like GOAEXPRESS20 or HILLSTATION15?</span>
+                        <i id="faq1-icon" class="fa-solid fa-chevron-down text-slate-400 transition transform"></i>
+                    </button>
+                    <div id="faq1" class="hidden p-5 pt-0 text-sm text-slate-600 border-t border-slate-100 bg-slate-50/50">
+                        When you click "Book This Package", simply enter the promo code into the booking form. The discount will instantly be subtracted from your total price calculation.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq('faq2')" class="w-full p-5 text-left font-bold text-slate-800 flex justify-between items-center hover:bg-slate-50 transition">
+                        <span>What is included in the Mumbai to Goa package?</span>
+                        <i id="faq2-icon" class="fa-solid fa-chevron-down text-slate-400 transition transform"></i>
+                    </button>
+                    <div id="faq2" class="hidden p-5 pt-0 text-sm text-slate-600 border-t border-slate-100 bg-slate-50/50">
+                        The package includes round-trip transfers from Mumbai, 4 nights stay in a 4-star resort with swimming pool, daily breakfast, full-day sightseeing in North & South Goa, and Mandovi River cruise passes.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                    <button onclick="toggleFaq('faq3')" class="w-full p-5 text-left font-bold text-slate-800 flex justify-between items-center hover:bg-slate-50 transition">
+                        <span>What is the cancellation and refund policy?</span>
+                        <i id="faq3-icon" class="fa-solid fa-chevron-down text-slate-400 transition transform"></i>
+                    </button>
+                    <div id="faq3" class="hidden p-5 pt-0 text-sm text-slate-600 border-t border-slate-100 bg-slate-50/50">
+                        We offer free cancellation up to 7 days prior to your travel start date with 100% full refund. Cancellations made within 3 to 6 days incur a nominal 15% service fee.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <div class="space-y-6">
+                    <span class="text-sky-600 font-bold uppercase tracking-wider text-xs block">Get In Touch</span>
+                    <h2 class="text-3xl sm:text-4xl font-black font-serif-heading text-slate-900 leading-tight">Need a Customized Holiday Plan? Speak to Our Travel Experts</h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        Whether you are traveling solo, planning a honeymoon, or organizing a large family tour, our agents are available 24/7 to design custom itineraries tailored to your budget.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-center gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                            <div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 font-semibold block uppercase">Head Office</span>
+                                <span class="text-sm font-bold text-slate-800">402, Nariman Point, Marine Drive, Mumbai - 400021</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-slate-400 font-semibold block uppercase">Toll-Free Helpline</span>
+                                <span class="text-sm font-bold text-slate-800">+91 (022) 4981-8800 / +91 98200 12345</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Contact Form -->
+                <div class="bg-slate-50 p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-lg">
+                    <h3 class="text-xl font-bold text-slate-900 mb-6">Send an Inquiry</h3>
+                    <form onsubmit="handleInquiry(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Your Name</label>
+                            <input type="text" required placeholder="e.g. Rahul Sharma" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 outline-none transition text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Email or Phone</label>
+                            <input type="text" required placeholder="e.g. rahul@example.com / 9876543210" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 outline-none transition text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Message / Travel Requirement</label>
+                            <textarea rows="3" required placeholder="Tell us your tentative travel dates and group size..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 outline-none transition text-sm"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 rounded-xl transition text-sm shadow-md">
+                            Submit Inquiry
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <span class="text-xl font-bold text-white font-serif-heading">Wanderlust Travels</span>
+                <p class="text-xs text-slate-500 mt-1">© 2026 Wanderlust Travels & Experiences India Pvt Ltd. All rights reserved.</p>
+            </div>
+            <div class="flex items-center gap-6 text-sm">
+                <a href="#packages" class="hover:text-white transition">Packages</a>
+                <a href="#reviews" class="hover:text-white transition">Reviews</a>
+                <a href="#faqs" class="hover:text-white transition">FAQs</a>
+                <a href="#contact" class="hover:text-white transition">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE BOOKING MODAL -->
+    <div id="bookingModal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white w-full max-w-xl rounded-3xl overflow-hidden shadow-2xl border border-slate-200 transform transition-all my-8">
+            
+            <!-- Modal Header -->
+            <div class="bg-slate-900 text-white p-6 flex items-center justify-between">
+                <div>
+                    <span class="text-sky-400 text-xs font-bold uppercase tracking-wider block">Reservation Desk</span>
+                    <h3 id="modalPackageTitle" class="text-xl font-bold font-serif-heading">Book Tour Package</h3>
+                </div>
+                <button onclick="closeBookingModal()" class="w-9 h-9 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Form -->
+            <form onsubmit="handleBookingSubmit(event)" class="p-6 sm:p-8 space-y-5">
+                
+                <input type="hidden" id="basePrice" value="0">
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Full Name</label>
+                        <input type="text" id="custName" required placeholder="e.g. Priya Sharma" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Phone Number</label>
+                        <input type="tel" id="custPhone" required placeholder="+91 9876543210" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 outline-none text-sm">
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Travel Date</label>
+                        <input type="date" required id="travelDate" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 outline-none text-sm text-slate-700">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-600 mb-1">No. of Travelers</label>
+                        <select id="numGuests" onchange="calculateTotalPrice()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 outline-none text-sm">
+                            <option value="1">1 Person</option>
+                            <option value="2" selected>2 Persons</option>
+                            <option value="3">3 Persons</option>
+                            <option value="4">4 Persons</option>
+                            <option value="5">5+ Persons (Group Discount)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Promo Code Input & Validator -->
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Promo / Discount Code</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="modalPromoCode" placeholder="Enter coupon code" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-sky-500 outline-none text-sm uppercase">
+                        <button type="button" onclick="calculateTotalPrice()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition">
+                            Apply
+                        </button>
+                    </div>
+                    <span id="promoFeedback" class="text-xs font-semibold block mt-1"></span>
+                </div>
+
+                <!-- Dynamic Price Breakdown Summary Box -->
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1 text-sm">
+                    <div class="flex justify-between text-slate-500">
+                        <span>Base Rate:</span>
+                        <span id="summaryBaseRate">₹0</span>
+                    </div>
+                    <div class="flex justify-between text-slate-500">
+                        <span>Discount Savings:</span>
+                        <span id="summaryDiscount" class="text-emerald-600 font-bold">-₹0</span>
+                    </div>
+                    <div class="flex justify-between font-extrabold text-slate-900 pt-2 border-t border-slate-200 text-base">
+                        <span>Estimated Total:</span>
+                        <span id="summaryTotal" class="text-sky-600">₹0</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-700 hover:to-indigo-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition">
+                    Confirm & Reserve Instant Booking
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT CONTROLLERS -->
+    <script>
+        // Set minimum date selector to today
+        document.getElementById('travelDate').min = new Date().toISOString().split('T')[0];
+
+        // Global Modal Logic
+        function openBookingModal(packageName, basePrice = 12000, defaultPromo = '') {
+            document.getElementById('modalPackageTitle').innerText = packageName;
+            document.getElementById('basePrice').value = basePrice;
+            document.getElementById('modalPromoCode').value = defaultPromo;
+            
+            document.getElementById('bookingModal').classList.remove('hidden');
+            calculateTotalPrice();
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        // Price Calculation Engine
+        function calculateTotalPrice() {
+            const basePrice = parseFloat(document.getElementById('basePrice').value) || 10000;
+            const guests = parseInt(document.getElementById('numGuests').value) || 1;
+            const promo = document.getElementById('modalPromoCode').value.trim().toUpperCase();
+            const promoFeedback = document.getElementById('promoFeedback');
+
+            let totalBase = basePrice * guests;
+            let discountAmount = 0;
+
+            if (promo === 'GOAEXPRESS20') {
+                discountAmount = totalBase * 0.20; // 20% OFF
+                promoFeedback.innerText = "✓ Promo GOAEXPRESS20 applied! (20% Savings)";
+                promoFeedback.className = "text-xs font-semibold block mt-1 text-emerald-600";
+            } else if (promo === 'HILLSTATION15') {
+                discountAmount = 2500; // Flat 2500 Off
+                promoFeedback.innerText = "✓ Promo HILLSTATION15 applied! (₹2,500 Flat Savings)";
+                promoFeedback.className = "text-xs font-semibold block mt-1 text-emerald-600";
+            } else if (promo !== '') {
+                promoFeedback.innerText = "✕ Invalid promo code.";
+                promoFeedback.className = "text-xs font-semibold block mt-1 text-rose-600";
+            } else {
+                promoFeedback.innerText = "";
+            }
+
+            let finalTotal = Math.max(0, totalBase - discountAmount);
+
+            document.getElementById('summaryBaseRate').innerText = "₹" + totalBase.toLocaleString('en-IN');
+            document.getElementById('summaryDiscount').innerText = "-₹" + discountAmount.toLocaleString('en-IN');
+            document.getElementById('summaryTotal').innerText = "₹" + finalTotal.toLocaleString('en-IN');
+        }
+
+        // FAQ Accordion Toggle Logic
+        function toggleFaq(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById(id + '-icon');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // Form Submission Handlers
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('custName').value;
+            const pkg = document.getElementById('modalPackageTitle').innerText;
+            const total = document.getElementById('summaryTotal').innerText;
+
+            alert(`🎉 Thank you, ${name}!\n\nYour booking request for "${pkg}" (${total}) has been registered successfully.\n\nOur executive will call you shortly to issue your ticket vouchers.`);
+            closeBookingModal();
+        }
+
+        function handleInquiry(event) {
+            event.preventDefault();
+            alert("✨ Thank you for your inquiry! One of our travel consultants will contact you within 2 hours.");
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
